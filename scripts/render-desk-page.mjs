@@ -6,7 +6,7 @@ import { fileURLToPath } from 'node:url';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 const data = join(root, 'src/lib/data');
-const signature = 'Michał Nitsze';
+const signature = "v1.eyJzdWIiOiI3MzciLCJhdWQiOiJjaGFsbGVuZ2U6d2hhdC1pdC1zaG93cyIsImlhdCI6MTc5MzIwMjY3NCwiZXhwIjoxNzkzMjg5MDc0fQ.GSN0jjE40lhczEjelGdrqmpXgbpTiXM63Spt3DaWM0g";
 const reviewed = '2026-10-28';
 const ticket = 4471;
 
