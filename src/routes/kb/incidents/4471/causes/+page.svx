@@ -1,0 +1,38 @@
+---
+layout: runbook
+title: '#4471 holds two problems'
+owner: Michał Nitsze
+status: open
+reviewed: 2026-10-28
+signature: Michał Nitsze
+---
+
+<script>
+  import Callout from '#lib/kb/Callout.svelte';
+  import CauseTable from '#lib/kb/CauseTable.svelte';
+  import RenderStamp from '#lib/kb/RenderStamp.svelte';
+
+  const signature = 'Michał Nitsze';
+</script>
+
+#4471 merged every date report into one known issue. The cause is not the subject line, and it is not the tag intake guessed from the browser. It is the tenant: the locale they write dates in, and which booking form they run.
+
+The ticket's own cause is the one most of its reports share. Anything else in the table was merged into the wrong place.
+
+## parser
+
+The shared parser reads every date month first. A day-first tenant's dates come out flipped. Reports that arrived through the app, by email, or through a form whose hint already says DD/MM/YYYY are this bug. This is #4471.
+
+## hint
+
+booking-v3 prints MM/DD/YYYY under the date field. On a day-first tenant the form still reads the day first, so people type the month first, the way the hint tells them, and the day and month swap for a different reason. Those reports came in through the form. They need a ticket of their own.
+
+<Callout kind="warn">
+The desk marked #4471 known, as one issue with one fix. The table shows a second cause.
+</Callout>
+
+<CauseTable ticket={4471} />
+
+A few reports were read as a one-day move. They stay in the count of the cause they are filed under. The table footnotes them.
+
+<RenderStamp {signature} />
